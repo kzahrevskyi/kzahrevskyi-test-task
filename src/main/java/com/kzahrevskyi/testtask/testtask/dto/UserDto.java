@@ -1,11 +1,11 @@
-package com.kzahrevskyi.testtask.testtask.model;
+package com.kzahrevskyi.testtask.testtask.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class User {
+public class UserDto {
   private Long id;
   private String username;
   private String name;

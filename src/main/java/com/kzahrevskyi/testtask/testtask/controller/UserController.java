@@ -2,7 +2,7 @@ package com.kzahrevskyi.testtask.testtask.controller;
 
 import java.util.List;
 
-import com.kzahrevskyi.testtask.testtask.model.User;
+import com.kzahrevskyi.testtask.testtask.dto.UserDto;
 import com.kzahrevskyi.testtask.testtask.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping
-  public List<User> getUsers() {
+  public List<UserDto> getUsers() {
     return userService.getAllUsers();
   }
 }

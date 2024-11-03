@@ -2,8 +2,8 @@ package com.kzahrevskyi.testtask.testtask.repository;
 
 import java.util.List;
 
-import com.kzahrevskyi.testtask.testtask.model.User;
+import com.kzahrevskyi.testtask.testtask.dto.UserDto;
 
 public interface UserRepository {
-  List<User> findAllUsers();
+  List<UserDto> findAllUsers();
 }
