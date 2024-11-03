@@ -1,11 +1,11 @@
-package com.kzahrevskyi.test_task;
+package com.kzahrevskyi.testtask;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = KzahrevskyiTestTaskApplicationTests.class)
 class KzahrevskyiTestTaskApplicationTests {
-	@Test
-	void contextLoads() {
-	}
+  @Test
+  void contextLoads() {
+  }
 }

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
   private final DatabaseStrategyFactory databaseStrategyFactory;
+
   @Override
   public List<User> findAllUsers() {
     List<User> users = new ArrayList<>();

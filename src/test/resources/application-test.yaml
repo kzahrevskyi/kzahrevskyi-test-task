@@ -1,0 +1,25 @@
+database-config:
+  data-sources:
+    - name: data-base-1
+      strategy: postgres
+      url: ${DB1_URL:jdbc:postgresql://localhost:5432/testdb}
+      user: ${DB1_USERNAME:testuser}
+      password: ${DB1_PASSWORD:testpass}
+      table: users
+      mapping:
+        id: user_id
+        username: login
+        name: first_name
+        surname: last_name
+
+    - name: data-base-2
+      strategy: mysql
+      url: ${DB2_URL:}
+      user: ${DB2_USERNAME:}
+      password: ${DB2_PASSWORD:}
+      table: users
+      mapping:
+        id: user_id
+        username: login
+        name: first_name
+        surname: last_name
