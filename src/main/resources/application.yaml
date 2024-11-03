@@ -1,7 +1,6 @@
 server:
   port: ${PORT:8087}
 
-
 database-config:
   data-sources:
     - name: data-base-1
@@ -24,6 +23,6 @@ database-config:
       table: users2
       mapping:
         id: user_id
-        username: login
-        name: first_name
+        username: nickname
+        name: name
         surname: last_name
