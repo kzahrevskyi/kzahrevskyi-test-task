@@ -65,7 +65,7 @@ class UserControllerItTest {
 
   @Test
   @SneakyThrows
-  void shouldReturnAllUsersFromDB() {
+  void shouldReturnAllUsersFromDBs() {
     //given
     fillDb(postgresContainer);
     fillDb(secondPostgresContainer);
