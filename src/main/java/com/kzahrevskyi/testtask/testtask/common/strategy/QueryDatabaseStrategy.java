@@ -1,11 +1,15 @@
 package com.kzahrevskyi.testtask.testtask.common.strategy;
 
-import java.util.List;
-
 import com.kzahrevskyi.testtask.testtask.configuration.properties.DataSourceConfigProperties;
 import com.kzahrevskyi.testtask.testtask.dto.UserDto;
 import com.kzahrevskyi.testtask.testtask.dto.UserRequestParam;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface QueryDatabaseStrategy {
-  List<UserDto> getUsers(DataSourceConfigProperties.FieldsMapping fieldsMapping, String tableName,  UserRequestParam userRequestParam);
+  Page<UserDto> getUsers(
+      DataSourceConfigProperties.FieldsMapping fieldsMapping,
+      String tableName,
+      UserRequestParam userRequestParam,
+      Pageable pageable);
 }

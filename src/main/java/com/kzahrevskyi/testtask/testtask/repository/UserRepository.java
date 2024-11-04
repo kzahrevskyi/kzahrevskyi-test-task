@@ -1,10 +1,10 @@
 package com.kzahrevskyi.testtask.testtask.repository;
 
-import java.util.List;
-
 import com.kzahrevskyi.testtask.testtask.dto.UserDto;
 import com.kzahrevskyi.testtask.testtask.dto.UserRequestParam;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserRepository {
-  List<UserDto> findAllUsers(UserRequestParam userRequestParam);
+  Page<UserDto> findAllUsers(UserRequestParam userRequestParam, Pageable pageable);
 }

@@ -73,11 +73,9 @@ class UserControllerItTest {
     //when-then
     mockMvc.perform(get("/api/users"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$").isArray())
-        .andExpect(jsonPath("$").isNotEmpty())
-        .andExpect(jsonPath("$.length()").value(4))
-        .andExpect(jsonPath("$[0].username").value("user1"))
-        .andExpect(jsonPath("$[-1].username").value("user2"));
+        .andExpect(jsonPath("$.content[0].username").value("user1"))
+        .andExpect(jsonPath("$.content[-1].username").value("user2"))
+        .andExpect(jsonPath("$.totalElements").value(4));
   }
 
   @Test
@@ -88,12 +86,11 @@ class UserControllerItTest {
     fillDb(secondPostgresContainer);
 
     //when-then
-    mockMvc.perform(get("/api/users?name=Daniel"))
+    mockMvc.perform(get("/api/users")
+            .param("name", "Daniel"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$").isArray())
-        .andExpect(jsonPath("$").isNotEmpty())
-        .andExpect(jsonPath("$.length()").value(2))
-        .andExpect(jsonPath("$[0].name").value("Daniel"));
+        .andExpect(jsonPath("$.totalElements").value(2))
+        .andExpect(jsonPath("$.content[0].name").value("Daniel"));
   }
 
   @Test
@@ -114,8 +111,7 @@ class UserControllerItTest {
     //when-then
     mockMvc.perform(get("/api/users"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$").isArray())
-        .andExpect(jsonPath("$").isEmpty());
+        .andExpect(jsonPath("$.totalElements").value(0));
   }
 
   @SneakyThrows
