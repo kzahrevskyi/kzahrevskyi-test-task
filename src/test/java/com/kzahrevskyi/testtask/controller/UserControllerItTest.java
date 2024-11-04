@@ -77,8 +77,35 @@ class UserControllerItTest {
         .andExpect(jsonPath("$").isNotEmpty())
         .andExpect(jsonPath("$.length()").value(4))
         .andExpect(jsonPath("$[0].username").value("user1"))
-        .andExpect(jsonPath("$[-1].username").value("user2"))
-        .andReturn();
+        .andExpect(jsonPath("$[-1].username").value("user2"));
+  }
+
+  @Test
+  @SneakyThrows
+  void shouldReturnAllUsersFilteredByName() {
+    //given
+    fillDb(postgresContainer);
+    fillDb(secondPostgresContainer);
+
+    //when-then
+    mockMvc.perform(get("/api/users?name=Daniel"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$").isArray())
+        .andExpect(jsonPath("$").isNotEmpty())
+        .andExpect(jsonPath("$.length()").value(2))
+        .andExpect(jsonPath("$[0].name").value("Daniel"));
+  }
+
+  @Test
+  @SneakyThrows
+  void shouldReturnBadRequestWhenFilterParamIsInvalid() {
+    //given
+    fillDb(postgresContainer);
+    fillDb(secondPostgresContainer);
+
+    //when-then
+    mockMvc.perform(get("/api/users?name=<Daniel>"))
+        .andExpect(status().isBadRequest());
   }
 
   @Test
@@ -97,8 +124,8 @@ class UserControllerItTest {
     Statement statement = postgresConnection.createStatement();
     statement.execute(
         "CREATE TABLE users (user_id SERIAL PRIMARY KEY, login VARCHAR(255), first_name VARCHAR(255), last_name VARCHAR(255))");
-    statement.execute("INSERT INTO users (login, first_name, last_name) VALUES ('user1', 'First1', 'Last1')");
-    statement.execute("INSERT INTO users (login, first_name, last_name) VALUES ('user2', 'First2', 'Last2')");
+    statement.execute("INSERT INTO users (login, first_name, last_name) VALUES ('user1', 'Katie', 'Brown')");
+    statement.execute("INSERT INTO users (login, first_name, last_name) VALUES ('user2', 'Daniel', 'Taylor')");
     postgresConnection.close();
   }
 

@@ -13,7 +13,7 @@ database-config:
         surname: last_name
 
     - name: data-base-2
-      strategy: mysql
+      strategy: postgres
       url: ${DB2_URL:}
       user: ${DB2_USERNAME:}
       password: ${DB2_PASSWORD:}
